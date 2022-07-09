@@ -1,6 +1,9 @@
 # Server_Crawling
 서버 크롤링 작업장
 
+## JDK 11.0.15 버전 다운 링크
+- https://1drv.ms/u/s!AlxRVL_MeFUfgqYToHrGux4RMg36jQ?e=sBxFwe
+
 ## 요기요 API
 ### 요기요 매장정보 조회 API
 GET https://www.yogiyo.co.kr/api/v1/restaurants-geo/?category=치킨&items=20&lat=37.54775437002297&lng=127.06083008344&page=0  
