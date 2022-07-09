@@ -2,7 +2,7 @@ package _3jeon.server.yogiyo;
 
 import _3jeon.server.config.BaseException;
 import _3jeon.server.config.BaseResponse;
-import _3jeon.server.yogiyo.module.Restaurant;
+import _3jeon.server.yogiyo.model.YRestaurant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +24,19 @@ public class YogiyoController {
     }
 
     @ResponseBody
-    @GetMapping("/all")
-    public BaseResponse<List<Restaurant>> getRestaurant() {
+    @GetMapping("/restaurant")
+    public BaseResponse<List<YRestaurant>> getRestaurant(
+            @RequestParam(required = false) String category,
+            @RequestParam double lat,
+            @RequestParam double lon
+    ) {
+        if (category == null)
+            category = "all";
+
         try{
-            List<Restaurant> restaurantList = yogiyoService.getRestaurant();
-            return new BaseResponse<>(restaurantList);
+            List<YRestaurant> YRestaurantList = yogiyoService.getRestaurant(category, lat, lon);
+
+            return new BaseResponse<>(YRestaurantList);
         } catch (BaseException exception){
             return new BaseResponse<>(exception.getStatus());
         }

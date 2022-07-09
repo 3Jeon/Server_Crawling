@@ -2,7 +2,7 @@ package _3jeon.server.yogiyo;
 
 import _3jeon.server.config.BaseException;
 import _3jeon.server.yogiyo.component.YogiyoJsoup;
-import _3jeon.server.yogiyo.module.Restaurant;
+import _3jeon.server.yogiyo.model.YRestaurant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -21,10 +21,10 @@ public class YogiyoService {
         this.yogiyoJsoup = yogiyoJsoup;
     }
 
-    public List<Restaurant> getRestaurant() throws BaseException {
+    public List<YRestaurant> getRestaurant(String category, double lat, double lon) throws BaseException {
         try{
-            List<Restaurant> restaurantList = yogiyoJsoup.getRestaurantList();
-            return restaurantList;
+            List<YRestaurant> YRestaurantList = yogiyoJsoup.getYRestaurantList(category, lat, lon);
+            return YRestaurantList;
         } catch(Exception exception){
             throw new BaseException(REQUEST_ERROR);
         }
