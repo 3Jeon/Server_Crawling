@@ -123,7 +123,15 @@ public class YogiyoJsoup {
                 List<YSubMenu> ySubMenus = getYSubMenu(subchoices);
 
                 YMenu yMenu = new YMenu(
-
+                        (boolean) tmp.get("soldout"),
+                        Integer.parseInt(String.valueOf(tmp.get("review_couunt"))),
+                        (String) tmp.get("subtitle"),
+                        (String) tmp.get("description"),
+                        Integer.parseInt(String.valueOf(tmp.get("price"))),
+                        (String) tmp.get("slug"),
+                        ySubMenus,
+                        Integer.parseInt(String.valueOf(tmp.get("id"))),
+                        (String) tmp.get("name")
                 );
 
                 YMenus.add(yMenu);
@@ -147,9 +155,26 @@ public class YogiyoJsoup {
             for(int j=0; j<sub_cur.size(); j++){
                 JSONObject tmp = (JSONObject) sub_cur.get(j);
                 YSelectMenu ySelectMenu = new YSelectMenu(
-
+                        (String) tmp.get("slug"),
+                        (String) tmp.get("description"),
+                        Integer.parseInt(String.valueOf(tmp.get("price"))),
+                        Integer.parseInt(String.valueOf(tmp.get("id"))),
+                        (boolean) tmp.get("soldout"),
+                        (String) tmp.get("name")
                 );
+                ySelectMenus.add(ySelectMenu);
             }
+
+            YSubMenu ySubMenu = new YSubMenu(
+                    (boolean) cur.get("multiple"),
+                    (String) cur.get("name"),
+                    Integer.parseInt(String.valueOf(cur.get("multiple_count"))),
+                    ySelectMenus,
+                    (boolean) cur.get("mandatory"),
+                    (String) cur.get("slug")
+            );
+
+            ySubMenus.add(ySubMenu);
         }
 
         return ySubMenus;

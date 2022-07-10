@@ -16,7 +16,6 @@ public class YMenu {
     String description;
     int price;
     String slug;
-    String section;
     List<YSubMenu> subMenuList;
     int id;
     String name;

@@ -3,3 +3,6 @@ GET localhost:8080/yogiyo/all?lat=37.54775437002297&lon=127.06083008344&category
 
 ### 현위치 주변 메뉴 조회
 GET localhost:8080/yogiyo/all?lat=37.54775437002297&lon=127.06083008344
+
+### 가게의 모든 메뉴 조회
+GET localhost:8080/yogiyo/525858/menu
