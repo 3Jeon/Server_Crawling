@@ -9,7 +9,7 @@ x-Apikey: iphoneap
 
 
 ### 요기요 매장의 메뉴 조회
-GET https://www.yogiyo.co.kr/api/v1/restaurants/525858/menu/
+GET https://www.yogiyo.co.kr/api/v1/restaurants/313580/menu/
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
 

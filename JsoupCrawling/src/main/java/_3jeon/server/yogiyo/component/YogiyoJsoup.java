@@ -1,10 +1,7 @@
 package _3jeon.server.yogiyo.component;
 
 import _3jeon.server.config.secret.Secret;
-import _3jeon.server.yogiyo.model.YMenu;
-import _3jeon.server.yogiyo.model.YRestaurant;
-import _3jeon.server.yogiyo.model.YSelectMenu;
-import _3jeon.server.yogiyo.model.YSubMenu;
+import _3jeon.server.yogiyo.model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -94,8 +91,9 @@ public class YogiyoJsoup {
         return YRestaurants;
     }
 
-    public List<YMenu> getYMenuList(int id) {
-        String url = "https://www.yogiyo.co.kr/api/v1/restaurants-geo/{}/menu/".format(Integer.toString(id));
+    public List<YMenuGroup> getYMenuList(int id) {
+        String url = String.format("https://www.yogiyo.co.kr/api/v1/restaurants/%s/menu/", Integer.toString(id));
+
         Connection conn = Jsoup.connect(url)
                 .header("X-ApiSecret", Secret.YOGIYO_API_SECRET)
                 .header("X-Apikey", Secret.YOGIYO_API_KEY)
@@ -107,42 +105,51 @@ public class YogiyoJsoup {
                 .method(Connection.Method.GET);
 
         Document doc = null;
-        List<YMenu> YMenus = new ArrayList<>();
 
         try {
             doc = conn.get();
 
             JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(doc.text());
-            JSONArray jsonArray = (JSONArray) jsonObject.get("items");
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(doc.text());
 
+            List<YMenuGroup> yMenuGroupList = new ArrayList<>();
             for (int i = 0; i < jsonArray.size(); i++) {
                 JSONObject tmp = (JSONObject) jsonArray.get(i);
+                JSONArray items = (JSONArray) tmp.get("items");
 
-                JSONArray subchoices = (JSONArray) tmp.get("subchoices");
-                List<YSubMenu> ySubMenus = getYSubMenu(subchoices);
+                List<YMenu> yMenus = new ArrayList<>();
+                for (int j = 0; j < items.size(); j++) {
+                    JSONObject item = (JSONObject) items.get(j);
+                    List<YSubMenu> ySubMenus = getYSubMenu((JSONArray) item.get("subchoices"));
 
-                YMenu yMenu = new YMenu(
-                        (boolean) tmp.get("soldout"),
-                        Integer.parseInt(String.valueOf(tmp.get("review_couunt"))),
-                        (String) tmp.get("subtitle"),
-                        (String) tmp.get("description"),
-                        Integer.parseInt(String.valueOf(tmp.get("price"))),
-                        (String) tmp.get("slug"),
-                        ySubMenus,
-                        Integer.parseInt(String.valueOf(tmp.get("id"))),
-                        (String) tmp.get("name")
+                    YMenu yMenu = new YMenu(
+                            (boolean) item.get("soldout"),
+                            Integer.parseInt(String.valueOf(item.get("review_count"))),
+                            (String) item.get("subtitle"),
+                            (String) item.get("description"),
+                            Integer.parseInt(String.valueOf(item.get("price"))),
+                            (String) item.get("slug"),
+                            ySubMenus,
+                            Integer.parseInt(String.valueOf(item.get("id"))),
+                            (String) item.get("name")
+                    );
+                    yMenus.add(yMenu);
+                }
+
+                YMenuGroup group = new YMenuGroup(
+                        (String) tmp.get("name"),
+                        items,
+                        (String) tmp.get("slug")
                 );
-
-                YMenus.add(yMenu);
+                yMenuGroupList.add(group);
             }
+
+            return yMenuGroupList;
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-
-        return YMenus;
     }
 
     List<YSubMenu> getYSubMenu(JSONArray jsonArray){

@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Restaurant {
+public class YRestaurant {
     int id;
     String name;
     boolean is_available_delivery;

@@ -30,9 +30,9 @@ public class YogiyoService {
         }
     }
 
-    public List<YMenu> getYMenuList(int id) throws BaseException {
+    public List<YMenuGroup> getYMenuList(int id) throws BaseException {
         try{
-            List<YMenu> YMenuList = yogiyoJsoup.getYMenuList(id);
+            List<YMenuGroup> YMenuList = yogiyoJsoup.getYMenuList(id);
 
             return YMenuList;
         } catch (Exception exception){

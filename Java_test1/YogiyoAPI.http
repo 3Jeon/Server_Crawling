@@ -1,15 +1,15 @@
 ### 요기요 매장정보 조회 API
-GET https://www.yogiyo.co.kr/api/v1/restaurants-geo/?category=치킨&items=20&lat=37.54775437002297&lng=127.06083008344&page=0
+GET https://www.yogiyo.co.kr/api/v1/YRestaurants-geo/?category=치킨&items=20&lat=37.54775437002297&lng=127.06083008344&page=0
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
 
 ### 요기요 매장의 메뉴 조회
-GET https://www.yogiyo.co.kr/api/v1/restaurants/533374/menu/
+GET https://www.yogiyo.co.kr/api/v1/YRestaurants/533374/menu/
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
 
 
 ###
-GET https://www.yogiyo.co.kr/api/v1/restaurants-geo/?category=치킨&items=1&lat=35.86954385295&lng=128.596965097921&page=0
+GET https://www.yogiyo.co.kr/api/v1/YRestaurants-geo/?category=치킨&items=1&lat=35.86954385295&lng=128.596965097921&page=0
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
