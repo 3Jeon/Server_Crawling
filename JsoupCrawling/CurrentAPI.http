@@ -1,3 +1,6 @@
+### 네이버 주식 조회 API
+GET localhost:8080/kospi/all
+
 ### 현위치 주변 메뉴 조회(카테고리: 치킨)
 GET localhost:8080/yogiyo/restaurant?lat=37.54775437002297&lon=127.06083008344&category=치킨
 
