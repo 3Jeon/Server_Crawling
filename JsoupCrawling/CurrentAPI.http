@@ -1,12 +1,22 @@
 ### 네이버 주식 조회 API
 GET localhost:8080/kospi/all
 
-### 현위치 주변 메뉴 조회(카테고리: 치킨)
-GET localhost:8080/yogiyo/restaurant?lat=37.54775437002297&lon=127.06083008344&category=치킨
+// 요기요
+### 현위치 주변 매장 조회(카테고리: 치킨)
+GET localhost:8080/yogiyo/restaurant?lat=37.54775437002297&lng=127.06083008344&category=치킨
 
-### 현위치 주변 메뉴 조회(카테고리: all)
-GET localhost:8080/yogiyo/restaurant?lat=37.54775437002297&lon=127.06083008344
+### 현위치 주변 매장 조회(카테고리: all)
+GET localhost:8080/yogiyo/restaurant?lat=37.54775437002297&lng=127.06083008344
 
 ### 가게의 모든 메뉴 조회
 GET localhost:8080/yogiyo/313580/menu
 
+### 요기요 매장검색
+GET localhost:8080/yogiyo/search-restaurants?lat=37.5479009261467&lng=127.062295814953&search=굽네치킨
+
+/// 배달의 민족
+### 현위치 주변 매장 조회(카테고리: 치킨)
+GET localhost:8080/baemin/restaurant?category=CHICKEN&lat=37.5479009261467&lng=127.062295814953
+
+###
+GET https://shopdp-api.baemin.com/v8/shop/10724672/detail?lat=37.54766676253973&lng=127.0609096938018

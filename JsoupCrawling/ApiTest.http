@@ -1,21 +1,37 @@
 // 요기요
 ### 요기요 매장 정보 조회 API
 # Parameters 사용
-GET https://www.yogiyo.co.kr/api/v1/restaurants-geo/?category=치킨&items=5&lat=37.5027140&lng=180.092502&page=0
+GET https://www.yogiyo.co.kr/api/v1/restaurants-geo/?category=치킨&items=5&lat=37.5027140&lng=127.06083008344&page=0
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
 
 
 ### 요기요 매장의 메뉴 조회
 GET https://www.yogiyo.co.kr/api/v1/restaurants/313580/menu/
+Host: www.yogiyo.co.kr
+Accept-Encoding: br, gzip, deflate
+Accept-Language: ko-KR;q=1.0, en-US;q=0.9, ja-JP;q=0.8
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
-
 
 ### 모든 카테고리 요기요 매장 정보 조회 API
 GET https://www.yogiyo.co.kr/api/v1/restaurants-geo/?lat=37.54775437002297&lng=127.06083008344&page=0&items=20
 X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
 x-Apikey: iphoneap
+
+### 요기요 매장 이름 검색
+GET https://api.yogiyo.co.kr/discovery/search/all?customer_id=656634031&items=60&lat=37.5479009261467&lng=127.062295814953&own_delivery=true&page=0&search=%EA%B5%BD%EB%84%A4%EC%B9%98%ED%82%A8 HTTP/1.1
+Host: api.yogiyo.co.kr
+Accept-Encoding: br, gzip, deflate
+Accept-Language: ko-KR;q=1.0, en-US;q=0.9, ja-JP;q=0.8
+Accept: */*
+Connection: keep-alive
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTgxNDQ3MjIsImV4cCI6MTY1ODE1MTkyMiwicGxhdGZvcm0iOiJZR1kiLCJyb2xlIjoidXNlciIsInN1Yl9pZCI6IjY1NjYzNDAzMSIsImJhc2VfdXJsIjoiaHR0cHM6Ly93d3cueW9naXlvLmNvLmtyIn0.XJOYasISMbv4SchS6bqgaUf-VxuMmQQfhlHrLk6oMkJ8ATSRTfZ4bXEihx31krI6aGpiFw3B9UekYgAyco2CVZ2LBx2WClTov8HmDqZxLUtR_thWaD7FBipJGytpryywX8u9BoXVg1Gs1GsWX5VV2hoAbhOagxMWE8UWUawyeP-PxOqJMJBxbwePjnZRwQg2QGUIAdCqeO_zntLxEajPcPUtHvaW7Y-eYST1YK3UvWxGNwwtdecBLqHiWSp5RofE5ZTpCqH14Bc7GI-eF7fy1XoaSzRrlx15DeqXQq4AH0vd-I4V6yuNRftQ6GpW5Ogc0VNmlRNPkSJiY2DvrGcqgg
+User-Agent: iOS/iPhone7,2/12.4.5/yogiyo-ios-6.64.0
+X-ApiSecret: fe5183cc3dea12bd0ce299cf110a75a2
+X-ApiKey: iphoneap
+
+
 
 // 배달의 민족
 ### 배민 사용자 조회 API
@@ -56,7 +72,7 @@ USER-BAEDAL: baemin
 
 ### 91. 배민 카테고리 별 주문 가능 점포 조회
 // displayCategory: 카테고리 // latitude: 위도, longitude: 경도 // distance: 거리 구분 // sort
-GET https://shopdp-api.baemin.com/v1/BAEMIN/curations?displayCategory=CHICKEN&latitude=37.54766676253973&longitude=127.0609096938018&sort=SORT__DISTANCE&distance=
+GET https://shopdp-api.baemin.com/v1/BAEMIN/curations?displayCategory=CHICKEN&latitude=37.54766676253973&longitude=127.0609096938018&sort=SORT__DISTANCE&distance=2
 Host: shopdp-api.baemin.com
 User-Agent: iph1_11.26.1
 
@@ -67,7 +83,7 @@ Host: shopdp-api.baemin.com
 User-Agent: iph1_11.26.1
 
 ### 배민 매장명 검색으로 조회 API
-GET https://search-gateway.baemin.com/v1/search?appver=11.26.1&baeminDeliverySort=SORT__DEFAULT&currentTab=BAEMIN_DELIVERY&dvcid=BAEMIN&isBmartRegion=0&isFirstRequest=1&latitude=37.54766676253973&longitude=127.0609096938018&keyword=bbq&limit=25
+GET https://search-gateway.baemin.com/v1/search?appver=11.26.1&baeminDeliverySort=SORT__DEFAULT&currentTab=BAEMIN_DELIVERY&dvcid=BAEMIN&isBmartRegion=0&isFirstRequest=1&latitude=37.54766676253973&longitude=127.0609096938018&keyword=자담치킨&limit=30
 User-Agent: iph1_11.26.1
 USER-BAEDAL: baemin
 
@@ -105,3 +121,12 @@ X-EATS-LOCALE: ko
 X-EATS-LOCATION: {"latitude" : 37.547511130279254, "longitude" : 180.06088821638144}
 X-EATS-APP-VERSION: 1.3.50
 X-EATS-DEVICE-DENSITY: X2
+
+
+### TEST1
+GET https://shopdp-api.baemin.com/v8/shop/13560939/detail?lat=37.54766676253973&lng=127.0609096938018
+Host: shopdp-api.baemin.com
+User-Agent: iph1_11.26.1
+
+###
+GET http://buf.baemin.com/cache/FrLogo/2019/11/19/467626_frlogor.jpg
