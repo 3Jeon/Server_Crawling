@@ -11,12 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 public class YMenu {
     boolean soldout;
-    int review_count;
+    long review_count;
     String subtitle;
     String description;
-    int price;
+    long price;
     String slug;
     List<YSubMenu> subMenuList;
-    int id;
+    long id;
     String name;
 }

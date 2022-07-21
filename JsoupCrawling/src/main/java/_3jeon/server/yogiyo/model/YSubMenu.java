@@ -12,7 +12,7 @@ import java.util.List;
 public class YSubMenu {
     boolean multiple;
     String name;
-    int multiple_count;
+    long multiple_count;
     List<YSelectMenu> selectMenus;
     boolean mandatory;
     String slug;

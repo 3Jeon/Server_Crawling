@@ -2,7 +2,6 @@ package _3jeon.server.yogiyo;
 
 import _3jeon.server.config.BaseException;
 import _3jeon.server.config.BaseResponse;
-import _3jeon.server.yogiyo.model.YMenu;
 import _3jeon.server.yogiyo.model.YMenuGroup;
 import _3jeon.server.yogiyo.model.YRestaurant;
 import org.slf4j.Logger;
@@ -28,15 +27,14 @@ public class YogiyoController {
     @ResponseBody
     @GetMapping("/restaurant")
     public BaseResponse<List<YRestaurant>> getYRestaurant(
-            @RequestParam(required = false) String category,
+            @RequestParam(required = false, defaultValue = "all") String category,
             @RequestParam double lat,
-            @RequestParam double lon
+            @RequestParam double lng,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "50") int items
     ) {
-        if (category == null)
-            category = "all";
-
         try{
-            List<YRestaurant> YRestaurantList = yogiyoService.getYRestaurant(category, lat, lon);
+            List<YRestaurant> YRestaurantList = yogiyoService.getYRestaurant(category, lat, lng, page, items);
 
             return new BaseResponse<>(YRestaurantList);
         } catch (BaseException exception){
@@ -45,14 +43,32 @@ public class YogiyoController {
     }
 
     @ResponseBody
-    @GetMapping("/{restaurant_id}/menu")
-    public BaseResponse<List<YMenuGroup>> getYMenus(@PathVariable int restaurant_id){
+    @GetMapping("/{restaurant-id}/menu")
+    public BaseResponse<List<YMenuGroup>> getYMenus(@PathVariable(value = "restaurant-id") long restaurantId){
         try{
-            List<YMenuGroup> yMenuList = yogiyoService.getYMenuList(restaurant_id);
+            List<YMenuGroup> yMenuList = yogiyoService.getYMenuList(restaurantId);
 
             return new BaseResponse<>(yMenuList);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("/search-restaurants")
+    public BaseResponse<List<YRestaurant>> getYSearchRestaurants(
+            @RequestParam(required = false, defaultValue = "60") int items,
+            @RequestParam double lat,
+            @RequestParam double lng,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam String search
+    ) {
+        try{
+            List<YRestaurant> YRestaurantList = yogiyoService.getYSearchRestaurants(lat, lng, items, page, search);
+
+            return new BaseResponse<>(YRestaurantList);
+        } catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
         }
     }
 }

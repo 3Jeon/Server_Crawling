@@ -10,25 +10,25 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class YRestaurant {
-    int id;
+    long id;
     String name;
+    boolean open;
     boolean is_available_delivery;
     boolean is_available_pickup;
     List<String> category;
-    int additional_discount;
+    long additional_discount;
     double review_avg;
-    int review_count;
+    long review_count;
     double lat;
-    double lon;
+    double lng;
     double distance;
-    int min_order_amount;
-    int free_delivery_threshold;
-    boolean is_deliverable;
+    long min_order_amount;
+    long free_delivery_threshold;
     String estimated_delivery_time;
     boolean has_shop_coupons;
-    int adjusted_delivery_fee;
+    long adjusted_delivery_fee;
     String phone;
     String address;
     String logo_url;
-    int minimum_pickup_minutes;
+    long minimum_pickup_minutes;
 }

@@ -10,8 +10,8 @@ import lombok.Setter;
 public class YSelectMenu {
     String slug;
     String description;
-    int price;
-    int id;
+    long price;
+    long id;
     boolean soldout;
     String name;
 }
