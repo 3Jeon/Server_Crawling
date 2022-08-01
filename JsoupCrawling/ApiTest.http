@@ -72,13 +72,13 @@ USER-BAEDAL: baemin
 
 ### 91. 배민 카테고리 별 주문 가능 점포 조회
 // displayCategory: 카테고리 // latitude: 위도, longitude: 경도 // distance: 거리 구분 // sort
-GET https://shopdp-api.baemin.com/v1/BAEMIN/curations?displayCategory=CHICKEN&latitude=37.54766676253973&longitude=127.0609096938018&sort=SORT__DISTANCE&distance=2
+GET https://shopdp-api.baemin.com/v1/BAEMIN/curations?displayCategory=CHINESE&latitude=37.54766676253973&longitude=127.0609096938018&sort=SORT__DISTANCE&distance=2
 Host: shopdp-api.baemin.com
 User-Agent: iph1_11.26.1
 
 ### 369. 배민 매장 메뉴 조회
 // PathVarialbe: 매장 번호(ex:10724672) // lat: 위도, lng: 경도
-GET https://shopdp-api.baemin.com/v8/shop/10724672/detail?lat=37.54766676253973&lng=127.0609096938018
+GET https://shopdp-api.baemin.com/v8/shop/13124885/detail?lat=37.54766676253973&lng=127.0609096938018
 Host: shopdp-api.baemin.com
 User-Agent: iph1_11.26.1
 

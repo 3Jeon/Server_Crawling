@@ -16,8 +16,8 @@ import static _3jeon.server.config.BaseResponseStatus.SUCCESS;
 public class BaseResponse<T> {
     @JsonProperty("isSuccess")
     private final Boolean isSuccess;
-    private final String message;
     private final int code;
+    private final String message;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T result;
 
